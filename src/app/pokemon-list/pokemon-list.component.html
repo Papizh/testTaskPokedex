@@ -1,18 +1,21 @@
 <div class="wrapper pokemons-list">
   <div *ngIf="!pokemons" class="card-deck">Please wait</div>
+
   <div class="container list" *ngIf="pokemons">
     <div
-      class="card mb-2 pokemon animated jello"
+      class="card"
       *ngFor="let pokemonInfo of pokemons.results"
       (mouseover)="pokemonInfo.over = true"
       (mouseleave)="pokemonInfo.over = false"
+      [fragment]="'promotions'"
       [routerLink]="['/pokemon/', pokemonInfo.name]"
     >
       <div class="card-img">
         <img
           *ngIf="
             pokemonInfo.pokemon != null &&
-            pokemonInfo.pokemon.sprites.front_default "
+            pokemonInfo.pokemon.sprites.front_default
+          "
           class="card-img-top"
           [src]="pokemonInfo.pokemon.sprites.front_default"
           alt="Pokemon"
@@ -22,16 +25,27 @@
       <div class="card-name">{{ pokemonInfo.name }}</div>
 
       <div class="flexPosition" *ngIf="pokemonInfo.pokemon?.types">
-        <div class="styleType"
+        <div
+          class="styleType"
           *ngFor="let type of pokemonInfo.pokemon.types"
-          [ngClass]='type.type.name'
+          [ngClass]="type.type.name"
         >
           {{ type.type.name }}
         </div>
       </div>
     </div>
-    <div class="container item">
-      <app-pokemon-details></app-pokemon-details>
-    </div>
+  </div>
+
+  <div id="promotions" class="container item">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="container" (click)="loadMore()">
+    <label
+      class="action-button shadow animate blue"
+      for="expanded"
+      role="button"
+      >Load More</label
+    >
   </div>
 </div>

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../models/pokemon';
 import { PokemonService } from '../services/pokemon.service';
 import { ActivatedRoute } from '@angular/router';
-import { stat } from 'fs';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -16,7 +15,6 @@ export class PokemonDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.loadData(params.get('id'));
-   
     });
   }
 

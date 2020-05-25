@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
 import { Pokemons } from '../models/pokemons';
 import { Pokemon } from '../models/pokemon';
-import { type } from 'os';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -12,6 +11,7 @@ import { type } from 'os';
 export class PokemonListComponent implements OnInit {
   pokemons: Pokemons;
   pokemon: Pokemon;
+  offset = 12;
 
   constructor(private service: PokemonService) {}
 
@@ -20,15 +20,25 @@ export class PokemonListComponent implements OnInit {
   }
 
   getPoko() {
-    this.service.getPokemonList().subscribe((pokemons: Pokemons) => {
+    this.service.getPokemonList(this.offset).subscribe((pokemons: Pokemons) => {
       this.pokemons = pokemons;
-      console.log(this.pokemons);
-
       this.pokemons.results.forEach((pokemonInfo) => {
         this.service
           .getPokemon(pokemonInfo.name)
           .subscribe((pokemon: Pokemon) => (pokemonInfo.pokemon = pokemon));
       });
     });
+  }
+  loadMore() {
+    this.offset = this.offset + 12;
+    this.service.getPokemonList(this.offset).subscribe((pokemons: Pokemons) => {
+      this.pokemons = pokemons;
+      this.pokemons.results.forEach((pokemonInfo) => {
+        this.service
+          .getPokemon(pokemonInfo.name)
+          .subscribe((pokemon: Pokemon) => (pokemonInfo.pokemon = pokemon));
+      });
+    });
+    console.log(this.offset);
   }
 }
