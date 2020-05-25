@@ -6,19 +6,19 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonService } from './services/pokemon.service';
-
+import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
-  declarations: [
-    AppComponent,
-    PokemonListComponent,
-    PokemonDetailsComponent
-  ],
+  declarations: [AppComponent, PokemonListComponent, PokemonDetailsComponent],
+
   imports: [
     BrowserModule,
     HttpClientModule,
-    BrowserModule
+    BrowserModule,
+    RouterModule,
+    AppRoutingModule,
   ],
   providers: [PokemonService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

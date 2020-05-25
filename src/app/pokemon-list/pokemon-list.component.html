@@ -1,1 +1,39 @@
-<p>pocemon-list works!</p>
+<div class="wrapper pokemons-list">
+  <div *ngIf="!pokemons" class="card-deck">Please wait</div>
+  <div class="container list" *ngIf="pokemons">
+    <div
+      class="card mb-2 pokemon animated jello"
+      *ngFor="let pokemonInfo of pokemons.results"
+      [ngClass]="{ shadow: pokemonInfo.over }"
+      (mouseover)="pokemonInfo.over = true"
+      (mouseleave)="pokemonInfo.over = false"
+      [routerLink]="['/pokemon/', pokemonInfo.name]"
+    >
+      <div class="card-img">
+        <img
+          *ngIf="
+            pokemonInfo.pokemon != null &&
+            pokemonInfo.pokemon.sprites.front_default
+          "
+          class="card-img-top animated flipInY"
+          [src]="pokemonInfo.pokemon.sprites.front_default"
+          alt="Pokemon"
+        />
+      </div>
+
+      <div class="card-name">{{ pokemonInfo.name }}</div>
+
+      <div class="flexPosition" *ngIf="pokemonInfo.pokemon?.types">
+        <div class="styleType"
+          *ngFor="let type of pokemonInfo.pokemon.types"
+          [ngClass]='type.type.name'
+        >
+          {{ type.type.name }}
+        </div>
+      </div>
+    </div>
+    <div class="container item">
+      <app-pokemon-details>details</app-pokemon-details>
+    </div>
+  </div>
+</div>

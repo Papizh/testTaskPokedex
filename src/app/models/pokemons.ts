@@ -1,3 +1,4 @@
+import { Pokemon } from './pokemon';
 
 export interface Pokemons {
   count: number;
@@ -10,4 +11,5 @@ export interface PokemonInfo {
   name: string;
   url: string;
   over: boolean;
+  pokemon: Pokemon;
 }

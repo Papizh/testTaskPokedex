@@ -1,0 +1,104 @@
+.wrapper {
+  display: flex;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+.card {
+  width: 21%;
+  border: 1px solid black;
+  margin: 20px 40px 20px 15px;
+  height: 200px;
+  min-width: 75px;
+}
+.card-img {
+  text-align: center;
+}
+.card-name {
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 20px;
+  text-align: center;
+}
+
+.styleType {
+  text-align: center;
+  text-transform: capitalize;
+  width: 60px;
+  border-radius: 3px;
+  margin: 2px;
+}
+.poison {
+  background: blueviolet;
+}
+.fire {
+  background: #d13126;
+}
+.grass {
+  background: #279636;
+}
+.water {
+  background: blue;
+}
+.normal {
+  background: #d3ded4;
+}
+.fighting {
+  background: orange;
+}
+.flying {
+  background: paleturquoise;
+}
+.ground {
+  background: saddlebrown;
+}
+.rock {
+  background: black;
+}
+.bug {
+  background: coral;
+}
+.ghost {
+  background: darkgrey;
+}
+.steel {
+  background: slategray;
+}
+
+.electric {
+  background: yellow;
+}
+
+.psychic {
+  background: teal;
+}
+
+.ice {
+  background: aliceblue;
+}
+
+.dragon {
+  background: darkblue;
+}
+.dark {
+  background: black;
+}
+
+.fairy {
+  background: paleturquoise;
+}
+
+.unknown {
+  background: papayawhip;
+}
+
+.shadow {
+  background: gray;
+}
+
+.flexPosition {
+  display: flex;
+  justify-content: center;
+}
