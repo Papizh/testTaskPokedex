@@ -4,7 +4,6 @@
     <div
       class="card mb-2 pokemon animated jello"
       *ngFor="let pokemonInfo of pokemons.results"
-      [ngClass]="{ shadow: pokemonInfo.over }"
       (mouseover)="pokemonInfo.over = true"
       (mouseleave)="pokemonInfo.over = false"
       [routerLink]="['/pokemon/', pokemonInfo.name]"
@@ -13,9 +12,8 @@
         <img
           *ngIf="
             pokemonInfo.pokemon != null &&
-            pokemonInfo.pokemon.sprites.front_default
-          "
-          class="card-img-top animated flipInY"
+            pokemonInfo.pokemon.sprites.front_default "
+          class="card-img-top"
           [src]="pokemonInfo.pokemon.sprites.front_default"
           alt="Pokemon"
         />
@@ -33,7 +31,7 @@
       </div>
     </div>
     <div class="container item">
-      <app-pokemon-details>details</app-pokemon-details>
+      <app-pokemon-details></app-pokemon-details>
     </div>
   </div>
 </div>
